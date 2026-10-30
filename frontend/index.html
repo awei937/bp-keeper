@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E9F8A" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b191c" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="血压管家 — 家人的血压与服药记录，大字清晰、简单好用。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="血压管家">
+  <title>血压管家</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="error-bar" class="error-bar" hidden></div>
+  <div id="app" class="app" data-route="home"></div>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <script>
+    /* 捕获未处理异常，在页面顶部显示（同时记录到 window.__BP_ERRORS 便于自检） */
+    (function () {
+      window.__BP_ERRORS = [];
+      function showError(msg) {
+        window.__BP_ERRORS.push(String(msg));
+        var bar = document.getElementById('error-bar');
+        if (bar) {
+          bar.hidden = false;
+          bar.textContent = '页面出错：' + msg;
+        }
+      }
+      window.addEventListener('error', function (e) {
+        if (e && e.message) showError(e.message);
+      });
+      window.addEventListener('unhandledrejection', function (e) {
+        var r = e && e.reason;
+        showError((r && (r.message || r)) || '未知错误');
+      });
+    })();
+  </script>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/mock.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

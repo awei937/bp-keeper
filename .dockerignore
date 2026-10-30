@@ -1,0 +1,11 @@
+data/
+pylibs/
+tmp/
+_preview/
+deploy/
+**/__pycache__/
+**/*.pyc
+**/_preview/
+*.log
+bp_app.tar.gz
+_scratch/

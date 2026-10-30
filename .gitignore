@@ -1,0 +1,58 @@
+# 数据与运行时
+data/
+uploads/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.log
+
+# 配置 / 凭据
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+tools/
+deploy/acmedns.json
+deploy/*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 前端 / 构建
+node_modules/
+frontend/_preview/
+_screens/
+_shots/
+_shots_v2/
+_uploads/
+_scratch/
+download/
+*.apk
+*.aab
+*.idsig
+android/build/
+android/gen/
+android/bp-keeper.jks
+
+# 离线 wheel 缓存
+wheelhouse/*.whl
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 临时
+tmp/
+*.tmp
